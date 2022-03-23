@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './Counter.module.css';
 
 class Counter extends React.Component {
+  static totalFeedback = 0;
+  static percentPositivFeedback = 0;
+
   state = {
     good: 0,
     neutral: 0,
@@ -20,24 +23,21 @@ class Counter extends React.Component {
     this.setState(({ bad }) => ({ bad: bad + 1 }));
   };
 
-  //   componentDidMount() {
-  //     const { good, neutral, bad } = this.state;
-  //     const totalClicks = good + neutral + bad;
+  countTotalFeedback() {
+    const { good, neutral, bad } = this.state;
+    this.totalFeedback = good + neutral + bad;
+  }
 
-  //     document.title = `Всего кликнули ${totalClicks} раз`;
-  //   }
-
-  //   componentDidUpdate(prevProps, prevState) {
-  //     const { good, neutral } = this.state;
-
-  //     if (prevState.good !== good || prevState.neutral !== neutral) {
-  //       const totalClicks = good + neutral;
-
-  //       document.title = `Всего кликнули ${totalClicks} раз`;
-  //     }
-  //   }
+  countPositiveFeedbackPercentage() {
+    const { good } = this.state;
+    this.percentPositivFeedback = Math.round(
+      (100 / this.totalFeedback) * this.state.good
+    );
+  }
 
   render() {
+    this.countTotalFeedback();
+    this.countPositiveFeedbackPercentage();
     return (
       <>
         <button
@@ -70,18 +70,12 @@ class Counter extends React.Component {
         <p>Bad: {this.state.bad}</p>
         <p>
           Total:
-          {this.state.good + this.state.neutral + this.state.bad}
+          {this.totalFeedback}
         </p>
         <p>
           Positive feedback:
-          {(100 / (this.state.good + this.state.neutral + this.state.bad)) *
-          this.state.good
-            ? Math.round(
-                (100 /
-                  (this.state.good + this.state.neutral + this.state.bad)) *
-                  this.state.good
-              )
-            : '0'}
+          {/* {this.percentPositivFeedback} */}
+          {this.percentPositivFeedback ? this.percentPositivFeedback : '0'}%
         </p>
       </>
     );
@@ -89,11 +83,3 @@ class Counter extends React.Component {
 }
 
 export default Counter;
-{
-  /* <p>
-  Positive feedback:
-  {(100 / (this.state.good + this.state.neutral + this.state.bad)) *
-    this.state.good}
-  && 0
-</p>; */
-}
