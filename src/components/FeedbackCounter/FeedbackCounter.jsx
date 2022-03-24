@@ -14,17 +14,17 @@ class Counter extends React.Component {
     bad: 0,
   };
 
-  handleGoodIncrement = () => {
-    this.setState(({ good }) => ({ good: good + 1 }));
-  };
+  // handleGoodIncrement = () => {
+  //   this.setState(({ good }) => ({ good: good + 1 }));
+  // };
 
-  handleNeutralIncrement = () => {
-    this.setState(({ neutral }) => ({ neutral: neutral + 1 }));
-  };
+  // handleNeutralIncrement = () => {
+  //   this.setState(({ neutral }) => ({ neutral: neutral + 1 }));
+  // };
 
-  handleBadIncrement = () => {
-    this.setState(({ bad }) => ({ bad: bad + 1 }));
-  };
+  // handleBadIncrement = () => {
+  //   this.setState(({ bad }) => ({ bad: bad + 1 }));
+  // };
 
   onLeaveFeedback = e => {
     const name = e.target.name;
