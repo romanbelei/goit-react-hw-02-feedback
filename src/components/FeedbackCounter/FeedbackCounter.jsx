@@ -9,7 +9,7 @@ class Counter extends React.Component {
   static percentPositivFeedback = 0;
 
   state = {
-    good: 0,
+    fine: 0,
     neutral: 0,
     bad: 0,
   };
@@ -22,14 +22,14 @@ class Counter extends React.Component {
   };
 
   countTotalFeedback() {
-    const { good, neutral, bad } = this.state;
-    this.totalFeedback = good + neutral + bad;
+    const { fine, neutral, bad } = this.state;
+    this.totalFeedback = fine + neutral + bad;
   }
 
   countPositiveFeedbackPercentage() {
-    const { good } = this.state;
+    const { fine } = this.state;
     this.percentPositivFeedback = Math.round(
-      (100 / this.totalFeedback) * this.state.good
+      (100 / this.totalFeedback) * this.state.fine
     );
   }
 
@@ -41,7 +41,7 @@ class Counter extends React.Component {
       <>
         <Sections title="Please leave feedback">
           <FeedbackOptions
-            // options={['Good', 'Neutral', 'Bad']}
+            // options={['fine', 'Neutral', 'Bad']}
             options={objKey}
             onLeaveFeedback={this.onLeaveFeedback}
           />
@@ -51,7 +51,7 @@ class Counter extends React.Component {
         ) : (
           <Sections title="Statistics">
             <Statistics
-              good={this.state.good}
+              fine={this.state.fine}
               neutral={this.state.neutral}
               bad={this.state.bad}
               total={this.totalFeedback}
