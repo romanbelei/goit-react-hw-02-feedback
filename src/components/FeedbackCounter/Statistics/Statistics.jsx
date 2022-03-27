@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-const Statistics = ({ fine, neutral, bad, total, positivePercentage }) => {
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
     <>
       <p></p>
-      <p>Good: {fine}</p>
+      <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
       <p>Total: {total}</p>
@@ -14,7 +14,7 @@ const Statistics = ({ fine, neutral, bad, total, positivePercentage }) => {
 };
 
 Statistics.propTypes = {
-  fine: PropTypes.number,
+  good: PropTypes.number,
   neutral: PropTypes.number,
   bad: PropTypes.number,
 };
